@@ -1,0 +1,747 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجات أبو نمر الحلبي | شركة DXN العالمية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dxnRed: '#D32F2F',
+                        dxnGreen: '#2E7D32',
+                        dxnBlue: '#0288D1',
+                        goldAccent: '#FFD700',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite alternate',
+                        'marquee': 'marquee 18s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { transform: 'scale(1)', textShadow: '0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(211, 47, 47, 0.8)' },
+                            '100%': { transform: 'scale(1.03)', textShadow: '0 0 20px rgba(255, 215, 0, 0.9), 0 0 35px rgba(46, 125, 50, 0.9)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0d1117;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FFD700 0%, #FF5722 50%, #4CAF50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1b2838 0%, #0d1117 100%);
+        }
+        /* Marquee wrapper fix for smooth RTL/LTR scrolling */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 22s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 selection:bg-red-600 selection:text-white">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 glass-card shadow-2xl border-b border-yellow-500/20">
+        <!-- Top Bar with Language Selector and Contact Quick Link -->
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center text-sm border-b border-gray-800">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <span class="inline-flex items-center text-xs sm:text-sm font-semibold text-emerald-400">
+                    <i class="fab font-bold fa-whatsapp text-emerald-500 text-base ml-1"></i>
+                    00905317327802
+                </span>
+                <span class="text-gray-500">|</span>
+                <span class="text-xs text-gray-300">شركة DXN العالمية 🇹🇷</span>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <i class="fas fa-globe text-amber-400"></i>
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-gray-900 text-yellow-400 text-xs sm:text-sm rounded-lg px-2 py-1 border border-amber-500/40 focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer">
+                    <option value="ar">العربية (AR)</option>
+                    <option value="tr">Türkçe (TR)</option>
+                    <option value="en">English (EN)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Marquee Ticker -->
+        <div class="bg-gradient-to-r from-red-950 via-green-950 to-blue-950 py-2 border-y border-amber-500/30 overflow-hidden relative">
+            <div class="marquee-container">
+                <div class="marquee-content text-yellow-300 font-bold text-sm sm:text-base flex items-center space-x-6 space-x-reverse">
+                    <span id="marqueeText">أهلاً بكم في موقع أبو نمر الحلبي.. أرجو التواصل معي وإذا تحتاجه إلى العمل تواصلوا معي 🇹🇷</span>
+                    <span>•</span>
+                    <span>منتجات صحية طبيعية 100% من شركة DXN العالمية 🌿</span>
+                    <span>•</span>
+                    <span id="marqueeText2">أهلاً بكم في موقع أبو نمر الحلبي.. أرجو التواصل معي وإذا تحتاجه إلى العمل تواصلوا معي 🇹🇷</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Title Header Banner -->
+        <div class="max-w-7xl mx-auto px-4 py-4 text-center">
+            <h1 id="mainHeading1" class="text-2xl sm:text-4xl md:text-5xl font-extrabold gradient-text animate-pulse-glow mb-1 tracking-wide">
+                أهلاً بكم في منتجات أبو نمر الحلبي
+            </h1>
+            <h2 id="mainHeading2" class="text-lg sm:text-2xl font-bold text-emerald-400 tracking-wider">
+                وا أهلاً بكم في موقع شركة DXN
+            </h2>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="max-w-7xl mx-auto px-2 sm:px-4 py-2">
+            <ul class="flex flex-wrap justify-center items-center gap-2 text-xs sm:text-sm font-bold">
+                <li>
+                    <a href="#video-section" class="px-3 py-2 rounded-xl bg-gray-800/80 hover:bg-amber-500 hover:text-black transition-all border border-amber-500/20 flex items-center gap-1">
+                        <i class="fas fa-play-circle text-red-500"></i>
+                        <span id="navVideo">قسم الفيديو</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#shop-section" class="px-3 py-2 rounded-xl bg-gray-800/80 hover:bg-amber-500 hover:text-black transition-all border border-amber-500/20 flex items-center gap-1">
+                        <i class="fas fa-shopping-cart text-green-500"></i>
+                        <span id="navShop">قسم الشراء</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#register-section" class="px-3 py-2 rounded-xl bg-gray-800/80 hover:bg-amber-500 hover:text-black transition-all border border-amber-500/20 flex items-center gap-1">
+                        <i class="fas fa-user-plus text-blue-500"></i>
+                        <span id="navRegister">التسجيل للمبيعات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#faten-section" class="px-3 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white transition-all shadow-lg flex items-center gap-1">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <span id="navFaten">قسم الآنسة فاتن</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-16">
+
+        <!-- 1. VIDEO SHOWCASE SECTION -->
+        <section id="video-section" class="scroll-mt-28">
+            <div class="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-amber-500/30 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center mb-6">
+                    <span class="inline-block px-4 py-1 rounded-full bg-red-900/40 text-red-400 border border-red-500/30 text-xs font-bold mb-2">
+                        <i class="fas fa-circle text-red-500 animate-ping ml-1"></i> عرض مباشر
+                    </span>
+                    <h2 id="videoTitle" class="text-2xl sm:text-3xl font-extrabold text-amber-400">
+                        شاهد بالفيديو: تعريف منتجات DXN وفرص النجاح مع أبو نمر الحلبي
+                    </h2>
+                    <p id="videoDesc" class="text-gray-400 text-sm mt-1">تأكد من تشغيل الصوت لمتابعة كافة التفاصيل الهامة</p>
+                </div>
+
+                <!-- Video Player Container -->
+                <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-black border-2 border-amber-500/40">
+                    <video id="dxnMainVideo" class="w-full h-auto max-h-[550px] object-contain mx-auto" controls playsinline autoplay muted loop>
+                        <source src="https://files.catbox.moe/esjllo.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+
+                    <!-- Sound Unmute Floating Toggle -->
+                    <button id="unmuteBtn" onclick="toggleSound()" class="absolute bottom-4 left-4 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 transition-all transform hover:scale-105 z-10 text-xs sm:text-sm">
+                        <i id="soundIcon" class="fas fa-volume-mute text-lg"></i>
+                        <span id="soundText">تشغيل الصوت المباشر</span>
+                    </button>
+                </div>
+
+                <!-- Fast WhatsApp Action Under Video -->
+                <div class="text-center mt-6">
+                    <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20شاهدت%20الفيديو%20وأريد%20الاستفسار" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-full shadow-lg transition-all transform hover:-translate-y-1">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span id="videoWaBtn">تواصل مباشر مع أبو نمر حول الفيديو</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PRODUCTS & SHOPPING SECTION -->
+        <section id="shop-section" class="scroll-mt-28">
+            <div class="text-center mb-10">
+                <h2 id="shopTitle" class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-green-400 mb-2">
+                    قسم الشراء والمنتجات العلاجية والصحية
+                </h2>
+                <p id="shopSubtitle" class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+                    اختر المنتجات الصحية الطبيعية المعتمدة من DXN واضغط على زر الشراء ليتم توجيهك مباشرة للطلب عبر واتساب أبو نمر الحلبي
+                </p>
+            </div>
+
+            <!-- Grid of Products -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Product Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/oqg68q.jpg" alt="مكملات DXN العلاجية" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+1'">
+                            <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">طبيعي 100%</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">مجموعة المكملات العلاجية المتكاملة DXN</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                تركيبة ممتازة تعزز المناعة وتطرد السموم من الجسم. تحتوي على خلاصة الفطر الريشي والسبيرولينا لرفع الطاقة وتجديد خبايا الخلايا الحيوية.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-01</span>
+                            <span class="text-emerald-400 font-bold text-lg">سعر خاص لمباشر</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%201%20(مجموعة%20المكملات%20العلاجية)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/inhiiq.jpg" alt="عصير ومشروبات الصحة DXN" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+2'">
+                            <span class="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">موصى به</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">عصير المورينزي ومشروبات العافية</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                غني بالأنزيمات الطبيعية ومضادات الأكسدة القوية. يعمل على تحسين الهضم، تنظيف الجهاز الهضمي، ورفع النشاط الذهني والبدني.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-02</span>
+                            <span class="text-emerald-400 font-bold text-lg">سعر أعضاء مميز</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%202%20(عصير%20المورينزي%20والعافية)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/7aulvs.jpg" alt="حقيبة العناية الشاملة DXN" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+3'">
+                            <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">الأكثر طلباً</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">حقيبة العناية الشخصية والصحة الشاملة</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                تشمل معجون أسنان جانوزي الطبيعي، صابون جانوزي، وزيوت المساج المريحة. حماية كاملة للبشرة والجسم خالية من المواد الكيميائية الضارة.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-03</span>
+                            <span class="text-emerald-400 font-bold text-lg">عرض خاص</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%203%20(حقيبة%20العناية%20الشاملة)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/1yyusi.jpg" alt="القهوة السوداء والقهوة الصحية DXN" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+4'">
+                            <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">قهوة صحية</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">قهوة لينزي السوداء 2 في 1 المعززة</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                خالية من السكر ومحاطة بفطر الفطر الريشي، تمنحك النشاط والحيوية بدون رفع الضغط أو تسارع ضربات القلب. خيارك الأمثل للرشاقة.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-04</span>
+                            <span class="text-emerald-400 font-bold text-lg"> متوفر الآن</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%204%20(قهوة%20لينزي%20السوداء)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/gzpx0p.jpg" alt="طقم التخسيس والتطهير DXN" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+5'">
+                            <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">برنامج رشاقة</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">مجموعة التخسيس والرشاقة والتطهير</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                برنامج طبيعي متكامل لتخفيف الوزن وإذابة الدهون الزائدة وتطهير الجهاز الهضمي والقولون بطريقة صحية وأمنة تماماً.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-05</span>
+                            <span class="text-emerald-400 font-bold text-lg">نتائج مضمونة</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%205%20(مجموعة%20التخسيس%20والرشاقة)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div>
+                        <div class="relative overflow-hidden bg-gray-900 h-64 flex items-center justify-center p-2">
+                            <img src="https://files.catbox.moe/p1tmiq.jpg" alt="مسحوق السبيرولينا والفطر DXN" class="max-h-full max-w-full object-contain rounded-lg transform group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/400x300/111827/FFD700?text=منتج+DXN+6'">
+                            <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">غذاء كوني</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-amber-300 mb-2">غبار الطلع والسبيرولينا المثرية</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                السوبر فود الموصى به عالمياً للرجال والنساء والأطفال. يعوض النقص الغذائي، يحارب الفقر في الدم، ويمنح طاقة ونشاط طوال اليوم.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between mb-4 border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400">الرمز: DXN-06</span>
+                            <span class="text-emerald-400 font-bold text-lg">الأعلى تقييماً</span>
+                        </div>
+                        <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أريد%20شراء%20المنتج%20رقم%206%20(السبيرولينا%20والغذاء%20الكامل)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span class="buyBtnText">شراء الآن (00905317327802)</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SALES REGISTRATION SECTION (JOIN THE TEAM) -->
+        <section id="register-section" class="scroll-mt-28">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 relative shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold uppercase tracking-wider">
+                            فرصة عمل حر ومربح 🇹🇷
+                        </span>
+                        <h2 id="regTitle" class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-4 leading-tight">
+                            انضم الآن لفريق المبيعات والعمل مع <span class="text-amber-400">أبو نمر الحلبي</span>
+                        </h2>
+                        <p id="regDesc" class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                            إذا كنت تبحث عن فرصة عمل حر وبناء دخل إضافي أو شهري مميز من المنزل مع شركة DXN العالمية، سجل بياناتك الآن وسنتواصل معك فوراً لتدريبك وتزويدك برقم العضوية وتفاصيل البدء.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-gray-200 text-sm">
+                                <div class="w-8 h-8 rounded-full bg-green-900/60 border border-green-500/40 flex items-center justify-center text-green-400">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span id="regFeat1">عضوية عالمية مجانية وبدون أية شروط معقدة</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-200 text-sm">
+                                <div class="w-8 h-8 rounded-full bg-green-900/60 border border-green-500/40 flex items-center justify-center text-green-400">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span id="regFeat2">تدريب وتوجيه مباشر خطوة بخطوة من أبو نمر الحلبي</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-200 text-sm">
+                                <div class="w-8 h-8 rounded-full bg-green-900/60 border border-green-500/40 flex items-center justify-center text-green-400">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span id="regFeat3">أرباح ونسب مبيعات متصاعدة وعمولات حقيقية</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <div class="bg-gray-900/90 rounded-2xl p-6 border border-gray-800 shadow-xl">
+                        <h3 id="formTitle" class="text-xl font-bold text-amber-300 mb-4 text-center">
+                            استمارة الانضمام والتسجيل الفوري
+                        </h3>
+                        <form id="joinForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label id="lblFullName" class="block text-xs font-semibold text-gray-300 mb-1">الاسم الكامل:</label>
+                                <input type="text" id="fullName" required placeholder="أدخل اسمك الكريم" class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-400 text-white">
+                            </div>
+                            <div>
+                                <label id="lblPhone" class="block text-xs font-semibold text-gray-300 mb-1">رقم الهاتف / الواتساب مع المفتاح الدولي:</label>
+                                <input type="tel" id="phoneNumber" required placeholder="+90 531 732 78 02" class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-400 text-white dir-ltr text-right">
+                            </div>
+                            <div>
+                                <label id="lblCountry" class="block text-xs font-semibold text-gray-300 mb-1">الدولة ومكان الإقامة الحالي:</label>
+                                <input type="text" id="country" required placeholder="مثال: تركيا، سوريا، السعودية..." class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-400 text-white">
+                            </div>
+                            <div>
+                                <label id="lblNote" class="block text-xs font-semibold text-gray-300 mb-1">ملاحظات أو استفسار إضافي:</label>
+                                <textarea id="userNote" rows="2" placeholder="أريد الانضمام والبدء في العمل معكم..." class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-400 text-white"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-gray-950 font-extrabold py-3 rounded-xl shadow-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                <span id="submitBtnText">إرسال طلب الانضمام إلى الواتساب مباشرة</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MISS FATEN DEDICATED SECTION -->
+        <section id="faten-section" class="scroll-mt-28">
+            <div class="relative glass-card rounded-3xl p-6 sm:p-10 border-2 border-pink-500/40 shadow-2xl overflow-hidden bg-gradient-to-br from-gray-950 via-purple-950/30 to-pink-950/20">
+                
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-pink-600 to-purple-600 text-white text-xs font-extrabold px-6 py-2 rounded-bl-2xl shadow-lg">
+                    قسم خاص ومميز
+                </div>
+
+                <div class="text-center mb-10 pt-4">
+                    <h2 id="fatenMainTitle" class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-yellow-300 mb-2">
+                        قسم الآنسة فاتن - منتجات DXN والعناية
+                    </h2>
+                    <p id="fatenSubtitle" class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+                        مرحباً بكم في قسم الآنسة فاتن الخاص لعرض أجود مكملات ومنتجات DXN الصحية مع متابعة واستشارات مباشرة
+                    </p>
+                </div>
+
+                <!-- Faten Video Showcase -->
+                <div class="mb-12 max-w-3xl mx-auto rounded-2xl overflow-hidden border-2 border-pink-500/50 shadow-2xl bg-black">
+                    <div class="bg-gradient-to-r from-pink-900/80 to-purple-900/80 p-3 text-center text-sm font-bold text-pink-200">
+                        <i class="fas fa-video ml-1"></i> فيديو استعراض المنتجات الخاص بقسم الآنسة فاتن
+                    </div>
+                    <video class="w-full h-auto max-h-[450px] object-contain" controls playsinline loop muted>
+                        <source src="https://files.catbox.moe/esjllo.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Products Showcase Grid inside Faten Section -->
+                <h3 id="fatenGalleryTitle" class="text-2xl font-bold text-center text-amber-300 mb-6">
+                    معرض الصور والمنتجات المتاحة بقسم الآنسة فاتن
+                </h3>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-8">
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/oqg68q.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 1" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">علاج ومكمل طبيعي</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/inhiiq.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 2" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">عصير المورينزي</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/7aulvs.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 3" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">حقيبة العناية</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/1yyusi.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 4" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">القهوة السوداء</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/gzpx0p.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 5" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">برنامج الرشاقة</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-2 border border-pink-500/30 hover:scale-105 transition-transform text-center">
+                        <img src="https://files.catbox.moe/p1tmiq.jpg" class="h-32 w-full object-contain rounded-lg mb-2" alt="صورة 6" loading="lazy">
+                        <span class="text-xs text-gray-300 font-semibold block truncate">السبيرولينا الشاملة</span>
+                    </div>
+                </div>
+
+                <!-- Call to Action Button for Miss Faten -->
+                <div class="text-center pt-4">
+                    <a href="https://wa.me/905317327802?text=مرحباً،%20أريد%20التواصل%20بخصوص%20منتجات%20قسم%20الآنسة%20فاتن" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-extrabold px-8 py-4 rounded-full shadow-2xl transition-all transform hover:scale-105">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span id="fatenWaBtn">تواصل مباشرة مع قسم الآنسة فاتن ورقم المبيعات (00905317327802)</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-10 mt-20 text-center text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <h3 class="text-xl font-bold text-amber-400">موقع أبو نمر الحلبي | شركة DXN العالمية 🇹🇷</h3>
+            <p class="text-xs text-gray-500">
+                جميع الحقوق محفوظة © 2026 - منتجات صحية طبيعية 100% ومكملات غذائية عالية الجودة.
+            </p>
+            <div class="flex justify-center items-center gap-4 text-emerald-400 font-semibold text-sm">
+                <a href="https://wa.me/905317327802" target="_blank" class="hover:underline flex items-center gap-1">
+                    <i class="fab fa-whatsapp"></i> 00905317327802
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/905317327802?text=مرحباً%20أبو%20نمر%20الحلبي،%20أحتاج%20مساعدة%20واستفسار" target="_blank" class="fixed bottom-6 left-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center border-2 border-white/20">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- JavaScript Logic for Multi-language & Video Audio Control -->
+    <script>
+        // Dictionary for Translations
+        const translations = {
+            ar: {
+                mainHeading1: "أهلاً بكم في منتجات أبو نمر الحلبي",
+                mainHeading2: "وا أهلاً بكم في موقع شركة DXN",
+                marqueeText: "أهلاً بكم في موقع أبو نمر الحلبي.. أرجو التواصل معي وإذا تحتاجه إلى العمل تواصلوا معي 🇹🇷",
+                marqueeText2: "أهلاً بكم في موقع أبو نمر الحلبي.. أرجو التواصل معي وإذا تحتاجه إلى العمل تواصلوا معي 🇹🇷",
+                navVideo: "قسم الفيديو",
+                navShop: "قسم الشراء",
+                navRegister: "التسجيل للمبيعات",
+                navFaten: "قسم الآنسة فاتن",
+                videoTitle: "شاهد بالفيديو: تعريف منتجات DXN وفرص النجاح مع أبو نمر الحلبي",
+                videoDesc: "تأكد من تشغيل الصوت لمتابعة كافة التفاصيل الهامة",
+                soundTextMuted: "تشغيل الصوت المباشر",
+                soundTextUnmuted: "كتم الصوت",
+                videoWaBtn: "تواصل مباشر مع أبو نمر حول الفيديو",
+                shopTitle: "قسم الشراء والمنتجات العلاجية والصحية",
+                shopSubtitle: "اختر المنتجات الصحية الطبيعية المعتمدة من DXN واضغط على زر الشراء ليتم توجيهك مباشرة للطلب عبر واتساب أبو نمر الحلبي",
+                buyBtnText: "شراء الآن (00905317327802)",
+                regTitle: "انضم الآن لفريق المبيعات والعمل مع أبو نمر الحلبي",
+                regDesc: "إذا كنت تبحث عن فرصة عمل حر وبناء دخل إضافي أو شهري مميز من المنزل مع شركة DXN العالمية، سجل بياناتك الآن وسنتواصل معك فوراً لتدريبك وتزويدك برقم العضوية وتفاصيل البدء.",
+                regFeat1: "عضوية عالمية مجانية وبدون أية شروط معقدة",
+                regFeat2: "تدريب وتوجيه مباشر خطوة بخطوة من أبو نمر الحلبي",
+                regFeat3: "أرباح ونسب مبيعات متصاعدة وعمولات حقيقية",
+                formTitle: "استمارة الانضمام والتسجيل الفوري",
+                lblFullName: "الاسم الكامل:",
+                lblPhone: "رقم الهاتف / الواتساب مع المفتاح الدولي:",
+                lblCountry: "الدولة ومكان الإقامة الحالي:",
+                lblNote: "ملاحظات أو استفسار إضافي:",
+                submitBtnText: "إرسال طلب الانضمام إلى الواتساب مباشرة",
+                fatenMainTitle: "قسم الآنسة فاتن - منتجات DXN والعناية",
+                fatenSubtitle: "مرحباً بكم في قسم الآنسة فاتن الخاص لعرض أجود مكملات ومنتجات DXN الصحية مع متابعة واستشارات مباشرة",
+                fatenGalleryTitle: "معرض الصور والمنتجات المتاحة بقسم الآنسة فاتن",
+                fatenWaBtn: "تواصل مباشرة مع قسم الآنسة فاتن ورقم المبيعات (00905317327802)"
+            },
+            tr: {
+                mainHeading1: "Abu Nimer Halabi Ürünlerine Hoş Geldiniz",
+                mainHeading2: "DXN Şirketi Web Sitesine Hoş Geldiniz",
+                marqueeText: "Abu Nimer Halabi sitesine hoş geldiniz.. Lütfen benimle iletişime geçin, işe ihtiyacınız varsa ulaşın 🇹🇷",
+                marqueeText2: "Abu Nimer Halabi sitesine hoş geldiniz.. Lütfen benimle iletişime geçin, işe ihtiyacınız varsa ulaşın 🇹🇷",
+                navVideo: "Video Bölümü",
+                navShop: "Satın Alma Bölümü",
+                navRegister: "Satış Kaydı",
+                navFaten: "Bayan Faten Bölümü",
+                videoTitle: "Videoyu İzleyin: DXN Ürünleri ve Abu Nimer ile Başarı Fırsatı",
+                videoDesc: "Tüm önemli detayları takip etmek için sesi açtığınızdan emin olun",
+                soundTextMuted: "Canlı Sesi Aç",
+                soundTextUnmuted: "Sesi Kapat",
+                videoWaBtn: "Video Hakkında Abu Nimer ile Doğrudan İletişim",
+                shopTitle: "Satın Alma ve Sağlık Ürünleri Bölümü",
+                shopSubtitle: "DXN onaylı doğal sağlık ürünlerini seçin ve doğrudan WhatsApp üzerinden sipariş vermek için satın al butonuna basın",
+                buyBtnText: "Şimdi Satın Al (00905317327802)",
+                regTitle: "Satış Ekibine Katılın ve Abu Nimer ile Çalışın",
+                regDesc: "DXN ile evden ek gelir elde etmek ve özgür bir iş kurmak istiyorsanız, bilgilerinizi hemen kaydedin. Üyelik numaranız ve başlangıç detayları için sizinle iletişime geçeceğiz.",
+                regFeat1: "Ücretsiz ve karmaşık şartlar olmadan küresel üyelik",
+                regFeat2: "Abu Nimer Halabi'den adım adım doğrudan eğitim ve rehberlik",
+                regFeat3: "Artan satış kârları ve gerçek komisyonlar",
+                formTitle: "Anında Katılım ve Kayıt Formu",
+                lblFullName: "Ad Soyad:",
+                lblPhone: "Telefon / WhatsApp Numarası (Ülke Koduyla):",
+                lblCountry: "Ülke ve Mevcut İkametgah:",
+                lblNote: "Ek Notlar veya Sorular:",
+                submitBtnText: "Katılım Talebini Doğrudان WhatsApp'a Gönder",
+                fatenMainTitle: "Bayan Faten Bölümü - DXN ve Bakım Ürünleri",
+                fatenSubtitle: "Bayan Faten özel bölümüne hoş geldiniz. En kaliteli DXN takviyeleri ve sağlık ürünleri doğrudan danışmanlık ile",
+                fatenGalleryTitle: "Bayan Faten Bölümünde Mevcut Ürünler ve Galeri",
+                fatenWaBtn: "Bayan Faten Bölümü ile Doğrudan İletişim (00905317327802)"
+            },
+            en: {
+                mainHeading1: "Welcome to Abu Nimer Al-Halabi Products",
+                mainHeading2: "Welcome to DXN Company Website",
+                marqueeText: "Welcome to Abu Nimer Al-Halabi website.. Please contact me, if you need work contact me 🇹🇷",
+                marqueeText2: "Welcome to Abu Nimer Al-Halabi website.. Please contact me, if you need work contact me 🇹🇷",
+                navVideo: "Video Section",
+                navShop: "Shop Section",
+                navRegister: "Sales Registration",
+                navFaten: "Miss Faten Section",
+                videoTitle: "Watch Video: DXN Products & Success Opportunity with Abu Nimer",
+                videoDesc: "Make sure sound is enabled to follow all important details",
+                soundTextMuted: "Unmute Live Sound",
+                soundTextUnmuted: "Mute Sound",
+                videoWaBtn: "Direct Contact with Abu Nimer About Video",
+                shopTitle: "Shop & Health Products Section",
+                shopSubtitle: "Choose certified natural DXN products and click Buy Now to order directly via WhatsApp with Abu Nimer",
+                buyBtnText: "Buy Now (00905317327802)",
+                regTitle: "Join Sales Team & Work with Abu Nimer Al-Halabi",
+                regDesc: "If you are looking for a business opportunity to build extra monthly income from home with DXN, register now and we will contact you immediately.",
+                regFeat1: "Free global membership with no complex conditions",
+                regFeat2: "Step-by-step direct training from Abu Nimer Al-Halabi",
+                regFeat3: "Growing sales profits and real commissions",
+                formTitle: "Instant Join Registration Form",
+                lblFullName: "Full Name:",
+                lblPhone: "Phone / WhatsApp Number with Country Code:",
+                lblCountry: "Country & Current Residence:",
+                lblNote: "Additional Notes or Questions:",
+                submitBtnText: "Send Join Application Directly to WhatsApp",
+                fatenMainTitle: "Miss Faten Section - DXN & Care Products",
+                fatenSubtitle: "Welcome to Miss Faten special section featuring premium DXN natural supplements with direct consultation",
+                fatenGalleryTitle: "Gallery and Products Available in Miss Faten Section",
+                fatenWaBtn: "Direct Contact with Miss Faten Section (00905317327802)"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const data = translations[lang];
+
+            // Change Direction for LTR/RTL
+            if(lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+            }
+
+            // Update text elements
+            document.getElementById('mainHeading1').textContent = data.mainHeading1;
+            document.getElementById('mainHeading2').textContent = data.mainHeading2;
+            document.getElementById('marqueeText').textContent = data.marqueeText;
+            document.getElementById('marqueeText2').textContent = data.marqueeText2;
+            document.getElementById('navVideo').textContent = data.navVideo;
+            document.getElementById('navShop').textContent = data.navShop;
+            document.getElementById('navRegister').textContent = data.navRegister;
+            document.getElementById('navFaten').textContent = data.navFaten;
+            document.getElementById('videoTitle').textContent = data.videoTitle;
+            document.getElementById('videoDesc').textContent = data.videoDesc;
+            document.getElementById('videoWaBtn').textContent = data.videoWaBtn;
+            document.getElementById('shopTitle').textContent = data.shopTitle;
+            document.getElementById('shopSubtitle').textContent = data.shopSubtitle;
+            document.getElementById('regTitle').innerHTML = data.regTitle;
+            document.getElementById('regDesc').textContent = data.regDesc;
+            document.getElementById('regFeat1').textContent = data.regFeat1;
+            document.getElementById('regFeat2').textContent = data.regFeat2;
+            document.getElementById('regFeat3').textContent = data.regFeat3;
+            document.getElementById('formTitle').textContent = data.formTitle;
+            document.getElementById('lblFullName').textContent = data.lblFullName;
+            document.getElementById('lblPhone').textContent = data.lblPhone;
+            document.getElementById('lblCountry').textContent = data.lblCountry;
+            document.getElementById('lblNote').textContent = data.lblNote;
+            document.getElementById('submitBtnText').textContent = data.submitBtnText;
+            document.getElementById('fatenMainTitle').textContent = data.fatenMainTitle;
+            document.getElementById('fatenSubtitle').textContent = data.fatenSubtitle;
+            document.getElementById('fatenGalleryTitle').textContent = data.fatenGalleryTitle;
+            document.getElementById('fatenWaBtn').textContent = data.fatenWaBtn;
+
+            // Update Buy Buttons
+            const buyButtons = document.querySelectorAll('.buyBtnText');
+            buyButtons.forEach(btn => btn.textContent = data.buyBtnText);
+
+            // Update sound button text state
+            const video = document.getElementById('dxnMainVideo');
+            const soundText = document.getElementById('soundText');
+            if(video.muted) {
+                soundText.textContent = data.soundTextMuted;
+            } else {
+                soundText.textContent = data.soundTextUnmuted;
+            }
+        }
+
+        // Toggle Sound function for Video
+        function toggleSound() {
+            const video = document.getElementById('dxnMainVideo');
+            const soundIcon = document.getElementById('soundIcon');
+            const soundText = document.getElementById('soundText');
+            const data = translations[currentLang];
+
+            if (video.muted) {
+                video.muted = false;
+                soundIcon.className = 'fas fa-volume-up text-lg text-emerald-300';
+                soundText.textContent = data.soundTextUnmuted;
+            } else {
+                video.muted = true;
+                soundIcon.className = 'fas fa-volume-mute text-lg text-red-300';
+                soundText.textContent = data.soundTextMuted;
+            }
+        }
+
+        // Handle Registration Form Submit and Redirect to WhatsApp
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const country = document.getElementById('country').value;
+            const note = document.getElementById('userNote').value;
+
+            const message = `طلب انضمام جديد للعمل مع DXN:\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n🌍 الدولة: ${country}\n📝 ملاحظات: ${note}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/905317327802?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Auto Try Play Video on Load
+        window.addEventListener('load', function() {
+            const video = document.getElementById('dxnMainVideo');
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay started successfully
+                }).catch(error => {
+                    // Autoplay was prevented, user interaction required
+                    console.log("Autoplay waiting for click");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+```
